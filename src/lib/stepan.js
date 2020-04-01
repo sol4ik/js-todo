@@ -52,19 +52,20 @@ export default class Stepan {
 
     // ! if tested in browser concole throws an error, 
     // ! altough works if run as separate commands and not function
-    static checkRootElement() {
+    checkRootElement() {
       if (this.parent.tagName === "HTML") {
         return true;
       }
-      var curElement = this.parent;
-      while (curElement.parentElement != null || curElement.parentElement.tagName != "HTML") {
-          curElement = curElement.parentElement;
+      var curEl = this.parent.parentElement;
+      var prevEl = this.parent;
+      while (curEl !== null) {
+          prevEl = curEl;
+          curEl = curEl.parentElement;
       }
-      if (curElement.parentElement != null) {
+      if (prevEl.tagName === "HTML") {
         return true;
       }
       return false;
     }
-    
   }
 }

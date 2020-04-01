@@ -57,10 +57,10 @@ export default class Stepan {
         return true;
       }
       var curElement = this.parent;
-      while ( curElement.parentElement != null || curElement.parentElement.tagName != "HTML") {
+      while (curElement.parentElement != null || curElement.parentElement.tagName != "HTML") {
           curElement = curElement.parentElement;
       }
-      if (curElement.parentElement.tagName === "HTML") {
+      if (curElement.parentElement != null) {
         return true;
       }
       return false;

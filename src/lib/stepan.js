@@ -47,11 +47,7 @@ export default class Stepan {
       }
       this.parent = parent;
     }
-
-    // TODO (Bonus): Ensure that every component returns a top-level root element
-
-    // ! if tested in browser concole throws an error, 
-    // ! altough works if run as separate commands and not function
+    
     checkRootElement() {
       if (this.parent.tagName === "HTML") {
         return true;

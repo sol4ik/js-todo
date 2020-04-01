@@ -49,12 +49,18 @@ export default class Stepan {
     }
 
     // TODO (Bonus): Ensure that every component returns a top-level root element
+
+    // ! if tested in browser concole throws an error, 
+    // ! altough works if run as separate commands and not function
     static checkRootElement() {
-      var curElement = this;
-      while (curElement.parent.tagName != "html" || curElement.parent.tagName != null) {
-          curElement = curElement.parent;
+      if (this.parent.tagName === "HTML") {
+        return true;
       }
-      if (curElement.parent.tagName === "html") {
+      var curElement = this.parent;
+      while ( curElement.parentElement != null || curElement.parentElement.tagName != "HTML") {
+          curElement = curElement.parentElement;
+      }
+      if (curElement.parentElement.tagName === "HTML") {
         return true;
       }
       return false;

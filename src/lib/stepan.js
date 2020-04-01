@@ -47,7 +47,18 @@ export default class Stepan {
       }
       this.parent = parent;
     }
-    
+
     // TODO (Bonus): Ensure that every component returns a top-level root element
+    static checkRootElement() {
+      var curElement = this;
+      while (curElement.parent.tagName != "html" || curElement.parent.tagName != null) {
+          curElement = curElement.parent;
+      }
+      if (curElement.parent.tagName === "html") {
+        return true;
+      }
+      return false;
+    }
+    
   }
 }

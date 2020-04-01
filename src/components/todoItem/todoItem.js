@@ -15,8 +15,14 @@ export default class TodoItem extends Stepan.Component {
     const rootElement = Stepan.createElement('li', this.parent, { class: isDone && 'completed' });
     const todoViewContainer = Stepan.createElement('div', rootElement, { class: 'view' });
 
-    // TODO: Input must be checked if todo item is done
-    Stepan.createElement('input', todoViewContainer, {class: "toggle", type: "checkbox"});
+    if (isDone) {
+      Stepan.createElement('input', todoViewContainer, {class: "toggle", type: "checkbox", checked: true});
+    }
+    else {
+      Stepan.createElement('input', todoViewContainer, {class: "toggle", type: "checkbox"});
+    }
+    // Stepan.createElement('input', todoViewContainer, {class: "toggle", type: "checkbox", checked: isDone});
+
 
     Stepan.createElement('label', todoViewContainer, {innerText: title});
     Stepan.createElement('button', todoViewContainer, {class: "destroy"});
